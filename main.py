@@ -133,7 +133,6 @@ async def get_current_active_user(
 
 @app.post("/register", tags=['Register User'])
 async def register(username: str, full_name: str, email: str, password: str):
-    # Check if user already exists
     if get_user(fake_users_db, username):
         raise HTTPException(status_code=400, detail="Username already registered")
     hashed_password = get_password_hash(password)
